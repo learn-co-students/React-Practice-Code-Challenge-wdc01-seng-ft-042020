@@ -7,9 +7,8 @@ const Table = (props) => {
       return <div className="empty-plate" style={{ top: -7 * index }}/>
     })
   }
-  console.log(props)
-  return (
-    
+  
+  return (  
     <Fragment>
       <h1 className="remaining">
         You have: ${props.money} remaining!
