@@ -7,6 +7,12 @@ const API = "http://localhost:3000/sushis"
 
 class App extends Component {
 
+  componentDidMount(){
+    fetch(API)
+    .then(res => res.json())
+    .then(data => this.setState({sushis: data}))
+  }
+
   constructor(){
     super()
     this.state = {
@@ -37,16 +43,15 @@ class App extends Component {
     return this.state.sushis.slice(this.state.index, this.state.index + 4 ) 
   }
 
-  componentDidMount(){
-    fetch(API)
-    .then(res => res.json())
-    .then(data => this.setState({sushis: data}))
-  }
-
   render() {
     return (
       <div className="app">
-        <SushiContainer sushis={this.sushiOnTable()} moreSushi={this.moreSushiOnTable} eatSushi={this.eatSushi} eatenSushi={this.state.eaten} />
+        <SushiContainer 
+          sushis={this.sushiOnTable()} 
+          moreSushi={this.moreSushiOnTable} 
+          eatSushi={this.eatSushi} 
+          eatenSushi={this.state.eaten} 
+        />
         <Table money={this.state.money} eaten={this.state.eaten} />
       </div>
     );
